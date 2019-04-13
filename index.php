@@ -46,11 +46,22 @@
 		}
 
 		function checkNeighbours(cell){
-			var neighbours = cellsLife[cell[0]+1][cell[1]] + cellsLife[cell[0]-1][cell[1]] + cellsLife[cell[0]][cell[1]-1] + cellsLife[cell[0]+1][cell[1]-1] + cellsLife[cell[0]-1][cell[1]-1] + cellsLife[cell[0]][cell[1]+1] + cellsLife[cell[0]+1][cell[1]+1] + cellsLife[cell[0]-1][cell[1]+1];
-
-			if( ( neighbours <= 1 || neighbours >= 4 ) && cellsLife[cell[0]][cell[1]]){
-				dyingCells.push([cell[0], cell[1]]);
-			}else if( neighbours == 3 && !cellsLife[cell[0]][cell[1]]){
+			//cell[Y][X]
+			var neighbours = 
+				cellsLife[cell[0]+1][cell[1]]        //Top
+				+ cellsLife[cell[0]-1][cell[1]]      //Bottom
+				+ cellsLife[cell[0]][cell[1]-1]      //left
+				+ cellsLife[cell[0]+1][cell[1]-1]    //Top left
+				+ cellsLife[cell[0]-1][cell[1]-1]    //Bottom left
+				+ cellsLife[cell[0]][cell[1]+1]      //Right
+				+ cellsLife[cell[0]+1][cell[1]+1]    //Top right
+				+ cellsLife[cell[0]-1][cell[1]+1];   //Bottom right
+			
+			if(cellsLife[cell[0]][cell[1]]){
+				if( ( neighbours <= 1 || neighbours >= 4 )){
+					dyingCells.push([cell[0], cell[1]]);
+				}
+			}else if( neighbours == 3){
 				borningCells.push([cell[0], cell[1]]);
 			}
 		}
