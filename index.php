@@ -21,8 +21,8 @@
 	<script type="text/javascript">
 		var height = 500;
 		var width = 500;
-		let cellsY = <?php echo($cellsY);?>;
-		let cellsX = <?php echo($cellsX);?>;
+		const cellsY = <?php echo($cellsY);?>;
+		const cellsX = <?php echo($cellsX);?>;
 
 		var cellsLife = new Array(cellsY);
 
